@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MetroMood - Taipei MRT Dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <header class="pageHeader">
+        <div>
+            <p class="eyebrow">TAIPEI MRT · SEPTEMBER 2026</p>
+            <h1>MetroMood</h1>
+            <p class="intro">How Taipei moves, hour by hour.</p>
+        </div>
+    </header>
+
+    <section id="summaryCards" aria-label="Monthly overview">
+        <div class="summaryCard blueCard">
+            <p>Total trips this month</p>
+            <h2 id="totalTrips">Counting trips...</h2>
+            <span id="tripsNote" class="cardNote">Every ride logged across September</span>
+        </div>
+        <div class="summaryCard peachCard">
+            <p>Busiest hour</p>
+            <h2 id="busiestHour">Checking the clock...</h2>
+            <span id="hourNote" class="cardNote">The hour when the most people are on the move</span>
+        </div>
+        <div class="summaryCard greenCard">
+            <p>Busiest station</p>
+            <h2 id="busiestStation">Finding the busiest stop...</h2>
+            <span id="stationNote" class="cardNote">Where the crowds gather most</span>
+        </div>
+    </section>
+
+    <section class="stationPanel">
+        <div class="panelHeading">
+            <h2>Explore a station</h2>
+            <p>Pick a station and see how busy it gets.</p>
+        </div>
+        <div id="stationFilter">
+            <label for="stationSelect">MRT station</label>
+            <select id="stationSelect">
+                <option value="">Choose a station...</option>
+            </select>
+        </div>
+        <div id="stationInfo" aria-live="polite">
+            <h3 id="selectedStation">No station picked yet</h3>
+            <p id="selectedActivity">Choose one above and we'll tell you how busy it is.</p>
+        </div>
+    </section>
+
+    <main class="chartGrid">
+        <section class="chartCard stationCard">
+            <div class="chartHeading">
+                <h2>Busiest stations</h2>
+                <p>The ten stations where the most people come and go.</p>
+            </div>
+            <div id="mainChart" role="img" aria-label="Bar chart showing the ten stations with the highest passenger activity"></div>
+            <p class="chartDescription">The longer the bar, the busier the station. Pick a station above and it lights up in orange if it made the top 10.</p>
+        </section>
+
+        <section class="chartCard hourlyCard">
+            <div class="chartHeading">
+                <h2>Hour by hour</h2>
+                <p>How the day ebbs and flows.</p>
+            </div>
+            <div id="rightUpChart" role="img" aria-label="Line chart showing passenger trips by hour"></div>
+            <p class="chartDescription">Look for the rush-hour peaks, and the quiet stretch in the early hours when the trains rest.</p>
+        </section>
+
+        <section class="chartCard heatmapCard">
+            <div class="chartHeading">
+                <h2>Day by day, hour by hour</h2>
+                <p>Spot the busy days and the quiet ones.</p>
+            </div>
+            <div id="rightDownChart" role="img" aria-label="Heatmap showing passenger trips by date and hour"></div>
+            <p class="chartDescription">Each square is one hour on one day: the darker the square, the busier it was. Weekend dates are in orange.</p>
+        </section>
+    </main>
+
+    <footer>Built from Taipei MRT hourly station OD statistics · September 2026</footer>
+    <script src="./script.js"></script>
+</body>
+</html>
